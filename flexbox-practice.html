@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox макет | Lab9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .logo span {
+            color: #f1c40f;
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav li {
+            width: 100%;
+        }
+
+        .nav a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            background: #f1c40f;
+            color: #2c3e50;
+            transform: translateY(-2px);
+        }
+        .about-section {
+            padding: 60px 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 5% 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info {
+            text-align: center;
+        }
+
+        .footer-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #f1c40f;
+        }
+
+        .footer-info p {
+            color: #bdc3c7;
+            margin-bottom: 8px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #f1c40f;
+            color: #2c3e50;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        @media screen and (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 5%;
+            }
+
+            .logo {
+                text-align: left;
+            }
+
+            .nav {
+                flex-direction: row;
+                gap: 20px;
+            }
+
+            .nav li {
+                width: auto;
+            }
+
+            .nav a {
+                padding: 8px 16px;
+                background: transparent;
+            }
+
+            .nav a:hover {
+                background: #f1c40f;
+            }
+
+            .features {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .feature-card {
+                flex: 1 1 300px;
+                max-width: 350px;
+            }
+
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+
+            .footer-info {
+                text-align: left;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .header {
+                padding: 15px 10%;
+            }
+
+            .nav {
+                gap: 30px;
+            }
+
+            .about-section {
+                padding: 80px 10%;
+            }
+
+            .features {
+                gap: 40px;
+            }
+
+            .feature-card {
+                flex: 1 1 250px;
+            }
+
+            .footer {
+                padding: 50px 10% 20px;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #f1c40f;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 30px;
+        }
+
+        .cta-button:hover {
+            background: #d4ac0d;
+            transform: scale(1.05);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        @media screen and (min-width: 768px) {
+            .hero {
+                padding: 80px 5%;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Flex<span>Box</span></div>
+        <ul class="nav">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Услуги</a></li>
+            <li><a href="#">Проекты</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <h1>Добро пожаловать в мир Flexbox</h1>
+        <p>Создаем современные адаптивные макеты с помощью CSS Flexbox</p>
+        <a href="#" class="cta-button">Узнать больше</a>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Почему выбирают нас</h2>
+                <p>Три ключевых преимущества работы с нами</p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Быстрота</h3>
+                    <p>Используем современные технологии для быстрой загрузки и оптимизации производительности вашего сайта.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Адаптивность</h3>
+                    <p>Ваш сайт будет идеально выглядеть на всех устройствах: от мобильных телефонов до широкоформатных мониторов.</p>
+                </div>
+
+
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Современный дизайн</h3>
+                    <p>Создаем стильные и современные интерфейсы, которые привлекают внимание и удерживают посетителей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>FlexBox Studio</h3>
+                <p>Создаем современные веб-решения</p>
+                <p> +7 (999) 123-45-67</p>
+                <p> info@flexbox.studio</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"></a>
+                <a href="#" class="social-icon"></a>
+                <a href="#" class="social-icon"></a>
+                <a href="#" class="social-icon"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+             2026 Назаренко Анна ИСП-232. Все права защищены. Лабораторная работа №9.
+        </div>
+    </footer>
+</body>
+</html>
